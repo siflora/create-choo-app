@@ -1,5 +1,5 @@
 # my-choo-app
-This is the generated output of ` npx `[`create-choo-app`](https://github.com/choojs/create-choo-app)` my-choo-app ` 🚂🚋🚋🚋
+This is the generated output of ` npx `[`create-choo-app`](https://github.com/choojs/create-choo-app)` my-choo-app ` 🚂🚋🚋🚋.
 
 ## Commands
 Command                | Description                                      |
