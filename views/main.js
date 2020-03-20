@@ -1,6 +1,6 @@
 var html = require('choo/html')
 
-var TITLE = 'my-choo-app - main'
+var TITLE = 'Thingylabs Tool - Timetracking'
 
 module.exports = view
 
