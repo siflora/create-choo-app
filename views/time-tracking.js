@@ -1,6 +1,7 @@
 var html = require('choo/html')
 
 var TITLE = 'time tracking'
+var store = require('./getTime.js')
 
 module.exports = view
 
@@ -13,28 +14,17 @@ function view (state, emit) {
       <main class="pa3 cf center">
        <p> hi there </p>
        <p>
-       now is ${console.log(currentTime())}
+       now is ${store()}
        </p>
-       <button onclick=${stopTime}>Start tracking your time</button>
+       <button onclick=${startTime}>Start tracking your time</button>
       </main>
     </body>
+
   `
-  function currentTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('txt').innerHTML =
-    h + ":" + m + ":" + s;
-    var t = setTimeout(startTime, 500);
-  }
-  function checkTime(i) {
-  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-  return i;
-}
-  function stopTime () {
+  
+  
+  
+  function startTime () {
     
   }
 }
