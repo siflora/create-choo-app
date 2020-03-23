@@ -9,8 +9,22 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
   app.use(require('choo-service-worker')())
 }
+app.use((state, emitter) => {
+  emitter.on('updateTime', () => setGlobalTime(state, emitter))
 
-app.use(require('./getTime'))
+  emitter.emit('updateTime')
+  setInterval(() => emitter.emit('updateTime'), 1000)
+})
+
+const setGlobalTime = (state, emitter) => {
+  const currentDate = new Date()
+  state.date = {
+    h: currentDate.getHours(),
+    m: currentDate.getMinutes(),
+    s: currentDate.getSeconds()
+  }
+  emitter.emit('render')
+}
 
 app.route('/', require('./views/time-tracking'))
 app.route('/*', require('./views/404'))

@@ -1,31 +1,26 @@
-var html = require('choo/html')
+const html = require('choo/html')
 
-var TITLE = 'time tracking'
-var store = require('../getTime.js/')
+import Clock from '../Clock'
+const clock = new Clock()
 
-var store = function () {}
+const TITLE = 'time tracking'
 
 module.exports = view
 
 function view (state, emit) {
-  
   if (state.title !== TITLE) emit(state.events.DOMTITLECHANGE, TITLE)
 
   return html`
-      <body class="code lh-copy">
+    <body class="code lh-copy">
       <main class="pa3 cf center">
-       <p>
-       now is ( ${state.time.h} : ${state.time.m} : ${state.time.s} )
-       </p>
-       <button onclick=${startTime}>Start tracking your time</button>
+       ${clock.render(state.date, emit)}
+       <button >Start tracking your time</button>
       </main>
     </body>
-
   `
-  
-  
-  
-  function startTime () {
-    
-  }
 }
+
+// ${state.date.h} : ${state.date.m} : ${state.date.s} 
+//onclick=${startTime}
+
+//${timeArea.render(state.date, emit)}
