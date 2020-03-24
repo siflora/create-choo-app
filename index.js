@@ -14,7 +14,7 @@ app.use((state, emitter) => {
 
   emitter.emit('updateTime')
   setInterval(() => emitter.emit('updateTime'), 1000)
-})
+  })
 
 const setGlobalTime = (state, emitter) => {
   const currentDate = new Date()
@@ -25,6 +25,7 @@ const setGlobalTime = (state, emitter) => {
   }
   emitter.emit('render')
 }
+
 
 app.route('/', require('./views/time-tracking'))
 app.route('/*', require('./views/404'))
