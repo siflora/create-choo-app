@@ -1,4 +1,5 @@
 const html = require('choo/html')
+const choo = require('choo')
 
 import Clock from '../Clock'
 import { EventEmitter } from 'events'
@@ -26,6 +27,7 @@ const sw = {
   secs: null
 }
 
+export { tick }
 const tick = () => {
   state.now ++;
   var remain = state.now;
@@ -65,17 +67,11 @@ function view (state, emit) {
 
 
 const startTime = (state, emitter) => {
-    // emitter from above  
-  const emitter2 = (emitter)
-    emitter.emit = function () {
-      asdfasdf
-    }
-    emitter = emitter2
-    // emitter new!
-
-    emitter.emit('tick', '')
-    setInterval(emitter.emit(tick()), 1000)
-    
+      emitter.emit('tick')
+}
+const recordTime = (state, emitter) => {
+    emitter.on('tick', setInterval(emitter.emit(tick()), 1000))
+    emitter.emit('render')
 }
 
 const stopTime = () => {

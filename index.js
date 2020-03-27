@@ -3,6 +3,7 @@ var choo = require('choo')
 
 css('tachyons')
 
+
 var app = choo()
 if (process.env.NODE_ENV !== 'production') {
   app.use(require('choo-devtools')())
@@ -14,6 +15,8 @@ app.use((state, emitter) => {
 
   emitter.emit('updateTime')
   setInterval(() => emitter.emit('updateTime'), 1000)
+
+  
   })
 
 const setGlobalTime = (state, emitter) => {
